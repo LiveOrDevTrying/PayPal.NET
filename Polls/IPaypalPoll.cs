@@ -1,7 +1,7 @@
 ﻿using PayPal.NET.Enums;
 using System;
 
-namespace PayPal.NET
+namespace PayPal.NET.Polls
 {
     public interface IPaypalPoll : IDisposable
     {

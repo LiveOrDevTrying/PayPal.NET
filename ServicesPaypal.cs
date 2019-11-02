@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using PayPal.NET.Models.Requests;
 using PayPal.NET.Models.Responses;
+using PayPal.NET.Polls;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,7 +41,7 @@ namespace PayPal.NET
 
                     httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {_paypalPoll.AccessCode}");
 
-                    var url = _paypalPoll.EnvironmentType == Enums.EnvironmentType.Sandbox ? Globals.PAYPAL_URL_SANDBOX : Globals.PAYPAL_URL_PRODUCTION;
+                    var url = _paypalPoll.EnvironmentType == Enums.EnvironmentType.Sandbox ? Globals.Globals.PAYPAL_URL_SANDBOX : Globals.Globals.PAYPAL_URL_PRODUCTION;
                     var response = await httpClient.PostAsync($"{url}/v2/checkout/orders",
                         new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json"));
 
@@ -63,7 +64,7 @@ namespace PayPal.NET
                 {
                     httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {_paypalPoll.AccessCode}");
 
-                    var url = _paypalPoll.EnvironmentType == Enums.EnvironmentType.Sandbox ? Globals.PAYPAL_URL_SANDBOX : Globals.PAYPAL_URL_PRODUCTION;
+                    var url = _paypalPoll.EnvironmentType == Enums.EnvironmentType.Sandbox ? Globals.Globals.PAYPAL_URL_SANDBOX : Globals.Globals.PAYPAL_URL_PRODUCTION;
                     var response = await httpClient.PostAsync($"{url}/v2/checkout/orders/{purchase.OrderId}/capture",
                         new StringContent(string.Empty, Encoding.UTF8, "application/json"));
 

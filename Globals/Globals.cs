@@ -1,4 +1,4 @@
-﻿namespace PayPal.NET
+﻿namespace PayPal.NET.Globals
 {
     sealed class Globals
     {

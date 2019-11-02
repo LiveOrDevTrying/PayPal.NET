@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace PayPal.NET
+namespace PayPal.NET.Polls
 {
     public class PaypalPoll : IPaypalPoll
     {
@@ -45,7 +45,7 @@ namespace PayPal.NET
                             var pass = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{_payPalClientId}:{_payPalClientSecret}"));
                             using (var httpClient = new HttpClient())
                             {
-                                var url = _environmentType == EnvironmentType.Sandbox ? Globals.PAYPAL_URL_SANDBOX : Globals.PAYPAL_URL_PRODUCTION;
+                                var url = _environmentType == EnvironmentType.Sandbox ? Globals.Globals.PAYPAL_URL_SANDBOX : Globals.Globals.PAYPAL_URL_PRODUCTION;
                                 var request = new HttpRequestMessage(HttpMethod.Post, $"{url}/v1/oauth2/token");
 
                                 request.Headers.Add("Authorization", "Basic " + pass);
