@@ -2,6 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <Authors>Rob Engel - LiveOrDevTrying</Authors>
+    <Company>Pixel Horror Studios</Company>
+    <Description>A simple PayPal.Net WebAPI wrapper for C# clients or webapps</Description>
+    <Copyright>Copyright 2019</Copyright>
+    <PackageProjectUrl>https://github.com/liveordevtrying/paypal.net</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/liveordevtrying/paypal.net</RepositoryUrl>
+    <RepositoryType>Github Public</RepositoryType>
+    <PackageTags>Paypal webapi wrapper c# clients server-side server side purchasing purchases purchase</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
