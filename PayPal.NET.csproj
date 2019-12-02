@@ -10,6 +10,7 @@
     <RepositoryUrl>https://github.com/liveordevtrying/paypal.net</RepositoryUrl>
     <RepositoryType>Github Public</RepositoryType>
     <PackageTags>Paypal webapi wrapper c# clients server-side server side purchasing purchases purchase</PackageTags>
+    <PackageReleaseNotes></PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
