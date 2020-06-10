@@ -6,18 +6,22 @@
     <title>$title$</title>
     <authors>Rob Engel - LiveOrDevTrying</authors>
     <owners>Pixel Horror Studios</owners>
-    <licenseUrl>https://github.com/LiveOrDevTrying/PayPal.NET/blob/master/LICENSE</licenseUrl>
+    <license type="expression">Apache-2.0</license>
     <projectUrl>https://github.com/LiveOrDevTrying/PayPal.NET</projectUrl>
-    <!--<iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
+    <icon>Logo.png</icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A simple PayPal.Net WebAPI wrapper for C# clients or webapps</description>
     <releaseNotes></releaseNotes>
-    <copyright>Copyright 2019</copyright>
+    <copyright>Copyright 2020</copyright>
     <tags>Paypal webapi wrapper c# clients server-side server side purchasing purchases purchase</tags>
     <dependencies>
-      <group targetFramework="net21">
-        <dependency id="Newtonsoft.Json" version="12.0.2" />
+      <group targetFramework="netcoreapp2.1">
+	    <dependency id="Microsoft.NETCore.App" version="2.1" />
+	    <dependency id="Newtonsoft.Json" version="12.0.2" />
       </group>
     </dependencies>
   </metadata>
+  <files>
+    <file src="Logo.png" target="" />
+  </files>
 </package>

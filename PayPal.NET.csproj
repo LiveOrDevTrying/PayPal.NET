@@ -5,12 +5,14 @@
     <Authors>Rob Engel - LiveOrDevTrying</Authors>
     <Company>Pixel Horror Studios</Company>
     <Description>A simple PayPal.Net WebAPI wrapper for C# clients or webapps</Description>
-    <Copyright>Copyright 2019</Copyright>
+    <Copyright>Copyright 2020</Copyright>
     <PackageProjectUrl>https://github.com/liveordevtrying/paypal.net</PackageProjectUrl>
     <RepositoryUrl>https://github.com/liveordevtrying/paypal.net</RepositoryUrl>
     <RepositoryType>Github Public</RepositoryType>
     <PackageTags>Paypal webapi wrapper c# clients server-side server side purchasing purchases purchase</PackageTags>
     <PackageReleaseNotes></PackageReleaseNotes>
+    <Version>1.0.2</Version>
+    <PackageIconUrl>https://pixelhorrorstudios.s3-us-west-2.amazonaws.com/Packages/Logo.png</PackageIconUrl>
   </PropertyGroup>
 
   <ItemGroup>
