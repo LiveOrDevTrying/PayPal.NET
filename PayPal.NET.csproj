@@ -1,22 +1,30 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Version>2.1.0</Version>
     <Authors>Rob Engel - LiveOrDevTrying</Authors>
-    <Company>Pixel Horror Studios</Company>
+    <Company>Rob Engel - LiveOrDevTrying - Pixel Horror Studios</Company>
     <Description>A simple PayPal.Net WebAPI wrapper for C# clients or webapps</Description>
-    <Copyright>Copyright 2020</Copyright>
-    <PackageProjectUrl>https://github.com/liveordevtrying/paypal.net</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/liveordevtrying/paypal.net</RepositoryUrl>
+    <Copyright>Copyright 2021</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/LiveOrDevTrying/PayPal.NET</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/LiveOrDevTrying/PayPal.NET</RepositoryUrl>
     <RepositoryType>Github Public</RepositoryType>
+    <PackageIcon>Logo.png</PackageIcon>
     <PackageTags>Paypal webapi wrapper c# clients server-side server side purchasing purchases purchase</PackageTags>
-    <PackageReleaseNotes></PackageReleaseNotes>
-    <Version>1.0.2</Version>
-    <PackageIconUrl>https://pixelhorrorstudios.s3-us-west-2.amazonaws.com/Packages/Logo.png</PackageIconUrl>
+    <ApplicationIcon>Logo.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <None Include="Logo.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.*" />
   </ItemGroup>
 
 </Project>

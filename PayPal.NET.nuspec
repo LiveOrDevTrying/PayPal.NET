@@ -5,20 +5,19 @@
     <version>$version$</version>
     <title>$title$</title>
     <authors>Rob Engel - LiveOrDevTrying</authors>
-    <owners>Pixel Horror Studios</owners>
-    <license type="expression">Apache-2.0</license>
+    <owners>Rob Engel - LiveOrDevTrying - Pixel Horror Studios</owners>
+    <license type="expression">MIT</license>
     <projectUrl>https://github.com/LiveOrDevTrying/PayPal.NET</projectUrl>
     <icon>Logo.png</icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A simple PayPal.Net WebAPI wrapper for C# clients or webapps</description>
     <releaseNotes></releaseNotes>
-    <copyright>Copyright 2020</copyright>
+    <copyright>Copyright 2021</copyright>
     <tags>Paypal webapi wrapper c# clients server-side server side purchasing purchases purchase</tags>
     <dependencies>
-      <group targetFramework="netcoreapp2.1">
-	    <dependency id="Microsoft.NETCore.App" version="2.1" />
-	    <dependency id="Newtonsoft.Json" version="12.0.2" />
-      </group>
+      <group targetFramework="netstandard2.1">
+		  <dependency id="Newtonsoft.Json" version="[12,13)" />
+	  </group>
     </dependencies>
   </metadata>
   <files>
