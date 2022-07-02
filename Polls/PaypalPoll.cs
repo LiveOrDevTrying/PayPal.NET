@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
-using PayPal.NET.Enums;
-using PayPal.NET.Models;
+using PayPal.NET.Models.Paypal;
+using PayPal.NET.Polls.Models;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -45,7 +45,7 @@ namespace PayPal.NET.Polls
                             var pass = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{_payPalClientId}:{_payPalClientSecret}"));
                             using (var httpClient = new HttpClient())
                             {
-                                var url = _environmentType == EnvironmentType.Sandbox ? Globals.Globals.PAYPAL_URL_SANDBOX : Globals.Globals.PAYPAL_URL_PRODUCTION;
+                                var url = _environmentType == EnvironmentType.Sandbox ? Statics.PAYPAL_URL_SANDBOX : Statics.PAYPAL_URL_PRODUCTION;
                                 var request = new HttpRequestMessage(HttpMethod.Post, $"{url}/v1/oauth2/token");
 
                                 request.Headers.Add("Authorization", "Basic " + pass);

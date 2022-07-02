@@ -1,5 +1,8 @@
 ﻿using Newtonsoft.Json;
-using PayPal.NET.Models.Requests;
+using PayPal.NET.Models.Paypal;
+using PayPal.NET.Models.Paypal.Models;
+using PayPal.NET.Models.Paypal.Requests;
+using PayPal.NET.Models.Paypal.Responses;
 using PayPal.NET.Models.Responses;
 using PayPal.NET.Polls;
 using System.Net.Http;
@@ -11,72 +14,64 @@ namespace PayPal.NET
     public class ServicesPaypal : IServicesPaypal
     {
         protected readonly IPaypalPoll _paypalPoll;
+        protected readonly IHttpClientFactory _httpClientFactory;
 
-        public ServicesPaypal(IPaypalPoll paypalPoll)
+        public ServicesPaypal(IPaypalPoll paypalPoll, IHttpClientFactory httpClientFactory = null)
         {
             _paypalPoll = paypalPoll;
+            _httpClientFactory = httpClientFactory;
         }
 
-        public virtual async Task<PaypalOrderResponse> CreatePaypalOrderAsync(PurchaseCreateRequest purchase)
+        public virtual async Task<PaypalOrderResponse> CreateOrderAsync(PaypalOrderRequest request)
         {
-            try
+            return await CreateOrderAsync(request);
+        }
+        public virtual async Task<PaypalOrderBreakdownResponse> CreateOrderBreakdownAsync(PaypalOrderBreakdownRequest request)
+        {
+            return await CreateOrderBreakdownAsync(request);
+        }
+        protected virtual async Task<T> CreateOrderAsync<T>(T request) where T : PaypalOrderRequest
+        {
+            using (var httpClient = _httpClientFactory != null ? _httpClientFactory.CreateClient() : new HttpClient())
             {
-                using (var httpClient = new HttpClient())
-                {
-                    var request = new PaypalOrderRequest
-                    {
-                        intent = "CAPTURE",
-                        purchase_units = new PaypalOrderRequest.Purchase_Units[]
-                        {
-                            new PaypalOrderRequest.Purchase_Units
-                            {
-                                amount = new PaypalOrderRequest.Purchase_Units.Amount
-                                {
-                                    currency_code = "USD",
-                                    value = purchase.Subtotal.ToString()
-                                }
-                            }
-                        }
-                    };
+                httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {_paypalPoll.AccessCode}");
 
-                    httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {_paypalPoll.AccessCode}");
+                var url = _paypalPoll.EnvironmentType == EnvironmentType.Sandbox ? Statics.PAYPAL_URL_SANDBOX : Statics.PAYPAL_URL_PRODUCTION;
+                var response = await httpClient.PostAsync($"{url}/v2/checkout/orders",
+                    new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json")).ConfigureAwait(false);
 
-                    var url = _paypalPoll.EnvironmentType == Enums.EnvironmentType.Sandbox ? Globals.Globals.PAYPAL_URL_SANDBOX : Globals.Globals.PAYPAL_URL_PRODUCTION;
-                    var response = await httpClient.PostAsync($"{url}/v2/checkout/orders",
-                        new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json"));
+                var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-                    var content = await response.Content.ReadAsStringAsync();
-
-                    return JsonConvert.DeserializeObject<PaypalOrderResponse>(content);
-                }
+                return JsonConvert.DeserializeObject<T>(content);
             }
-            catch
-            { }
-
-            return null;
         }
 
-        public virtual async Task<PaypalOrderAuthResponse> CapturePaypalTransactionAsync(PurchaseCreateRequest purchase)
+        public virtual async Task<PaypalCaptureResponse> CapturePaymentForOrderAsync(string orderId, PaypalCaptureRequest request)
         {
-            try
+            return await CapturePaymentForOrderAsync<PaypalCaptureResponse, PurchaseUnitResponse, Item, Amount>(orderId, request);
+        }
+        public virtual async Task<PaypalCaptureBreakdownResponse> CapturePaymentForOrderBreakdownAsync(string orderId, PaypalCaptureRequest request)
+        {
+            return await CapturePaymentForOrderAsync<PaypalCaptureBreakdownResponse, PurchaseUnitBreakdownResponse, ItemBreakdown, AmountBreakdown>(orderId, request);
+        }
+        protected virtual async Task<T> CapturePaymentForOrderAsync<T, PUB, I, A>(string orderId, PaypalCaptureRequest request)
+            where T : PaypalCaptureResponseBase<PUB, I, A>
+            where PUB : PurchaseUnitBaseResponse<I, A>
+            where I : ItemBase<A>
+            where A : Amount
+        {
+            using (var httpClient = _httpClientFactory != null ? _httpClientFactory.CreateClient() : new HttpClient())
             {
-                using (var httpClient = new HttpClient())
-                {
-                    httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {_paypalPoll.AccessCode}");
+                httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {_paypalPoll.AccessCode}");
 
-                    var url = _paypalPoll.EnvironmentType == Enums.EnvironmentType.Sandbox ? Globals.Globals.PAYPAL_URL_SANDBOX : Globals.Globals.PAYPAL_URL_PRODUCTION;
-                    var response = await httpClient.PostAsync($"{url}/v2/checkout/orders/{purchase.OrderId}/capture",
-                        new StringContent(string.Empty, Encoding.UTF8, "application/json"));
+                var url = _paypalPoll.EnvironmentType == EnvironmentType.Sandbox ? Statics.PAYPAL_URL_SANDBOX : Statics.PAYPAL_URL_PRODUCTION;
+                var response = await httpClient.PostAsync($"{url}/v2/checkout/orders/{orderId}/capture",
+                    new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json")).ConfigureAwait(false);
 
-                    var content = await response.Content.ReadAsStringAsync();
+                var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-                    return JsonConvert.DeserializeObject<PaypalOrderAuthResponse>(content);
-                }
+                return JsonConvert.DeserializeObject<T>(content);
             }
-            catch
-            { }
-
-            return null;
         }
     }
 }

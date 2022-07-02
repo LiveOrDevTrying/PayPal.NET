@@ -1,4 +1,4 @@
-﻿using PayPal.NET.Enums;
+﻿using PayPal.NET.Models.Paypal;
 using System;
 
 namespace PayPal.NET.Polls

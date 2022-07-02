@@ -1,4 +1,4 @@
-﻿namespace PayPal.NET.Models
+﻿namespace PayPal.NET.Polls.Models
 {
     public class PaypalToken
     {
