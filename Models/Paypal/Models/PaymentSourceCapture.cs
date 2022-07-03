@@ -1,6 +1,4 @@
-﻿using PayPal.NET.Models.Paypal.Requests;
-
-namespace PayPal.NET.Models.Paypal.Models
+﻿namespace PayPal.NET.Models.Paypal.Models
 {
     public class PaymentSourceCapture
     {

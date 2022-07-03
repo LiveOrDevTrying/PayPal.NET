@@ -2,7 +2,7 @@
 
 namespace PayPal.NET.Models.Responses
 {
-    public abstract class PaypalOrderResponseBase<PU, I, A>
+    public abstract class OrdersCreateOrderBase<PU, I, A>
         where PU : PurchaseUnitBaseResponse<I, A>
         where I : ItemBase<A>
         where A : Amount

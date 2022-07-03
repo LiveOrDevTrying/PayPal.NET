@@ -7,10 +7,12 @@ namespace PayPal.NET
 {
     public interface IServicesPaypal
     {
-        Task<PaypalOrderResponse> CreateOrderAsync(PaypalOrderRequest purchase);
-        Task<PaypalOrderBreakdownResponse> CreateOrderBreakdownAsync(PaypalOrderBreakdownRequest purchase);
+        Task<OrdersCreateOrderResponse> OrdersCreateOrderAsync(OrdersCreateOrderRequest purchase);
+        Task<OrdersCreateOrderBreakdownResponse> OrdersCreateOrderBreakdownAsync(OrdersCreateOrderBreakdownRequest purchase);
 
-        Task<PaypalCaptureResponse> CapturePaymentForOrderAsync(PaypalCaptureRequest request);
-        Task<PaypalCaptureBreakdownResponse> CapturePaymentForOrderBreakdownAsync(PaypalCaptureRequest request);
+        Task<OrdersCapturePaymentForOrderResponse> OrdersCapturePaymentForOrderAsync(OrdersCapturePaymentForOrderRequest request);
+        Task<OrdersCapturePaymentForOrderBreakdownResponse> OrdersCapturePaymentForOrderBreakdownAsync(OrdersCapturePaymentForOrderRequest request);
+
+        Task<PaymentsRefundCapturedPaymentResponse> PaymentsRefundCapturedPaymentAsync(string captureId, PaymentsRefundCapturedPaymentRequest request);
     }
 }

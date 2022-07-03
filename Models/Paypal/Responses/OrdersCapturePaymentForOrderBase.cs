@@ -4,7 +4,7 @@ using System;
 
 namespace PayPal.NET.Models.Paypal.Responses
 {
-    public abstract class PaypalCaptureResponseBase<PUR, I, A> where PUR : PurchaseUnitBaseResponse<I, A> where I : ItemBase<A> where A : Amount
+    public abstract class OrdersCapturePaymentForOrderBase<PUR, I, A> where PUR : PurchaseUnitBaseResponse<I, A> where I : ItemBase<A> where A : Amount
     {
         /// <summary>
         /// The date and time when the transaction occurred, in Internet date and time format.

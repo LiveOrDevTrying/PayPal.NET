@@ -1,4 +1,4 @@
-﻿namespace PayPal.NET.Models.Paypal.Requests
+﻿namespace PayPal.NET.Models.Paypal.Models
 {
     public class Token
     {
@@ -15,7 +15,7 @@
         /// The possible values are:
 
         /// BILLING_AGREEMENT.The PayPal billing agreement ID.References an approved recurring payment for goods or services.
-        
+
         /// Minimum length: 1.
         /// Maximum length: 255.
         /// Pattern: ^[0-9A-Z_-]+$.

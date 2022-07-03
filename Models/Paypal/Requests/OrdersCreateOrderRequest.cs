@@ -2,7 +2,7 @@
 
 namespace PayPal.NET.Models.Paypal.Requests
 {
-    public class PaypalOrderRequest : PaypalOrderRequestBase<PurchaseUnit, Item, Amount>
+    public class OrdersCreateOrderRequest : OrdersCreateOrderRequestBase<PurchaseUnit, Item, Amount>
     {
     }
 }
