@@ -10,7 +10,7 @@ namespace PayPal.NET
         Task<PaypalOrderResponse> CreateOrderAsync(PaypalOrderRequest purchase);
         Task<PaypalOrderBreakdownResponse> CreateOrderBreakdownAsync(PaypalOrderBreakdownRequest purchase);
 
-        Task<PaypalCaptureResponse> CapturePaymentForOrderAsync(string orderId, PaypalCaptureRequest request);
-        Task<PaypalCaptureBreakdownResponse> CapturePaymentForOrderBreakdownAsync(string orderId, PaypalCaptureRequest request);
+        Task<PaypalCaptureResponse> CapturePaymentForOrderAsync(PaypalCaptureRequest request);
+        Task<PaypalCaptureBreakdownResponse> CapturePaymentForOrderBreakdownAsync(PaypalCaptureRequest request);
     }
 }

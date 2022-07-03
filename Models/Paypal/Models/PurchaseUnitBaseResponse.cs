@@ -17,6 +17,6 @@
 
         /// Read only.
         /// </summary>
-        public Payment[] payments { get; set; }
+        public Payment payments { get; set; }
     }
 }

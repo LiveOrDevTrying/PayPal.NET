@@ -7,7 +7,7 @@
 
         /// Read only.
         /// </summary>
-        public DisputeCategory[] dispute_categories { get; set; }
+        public string[] dispute_categories { get; set; }
         /// <summary>
         /// Indicates whether the transaction is eligible for seller protection. For information, see PayPal Seller Protection for Merchants.
 

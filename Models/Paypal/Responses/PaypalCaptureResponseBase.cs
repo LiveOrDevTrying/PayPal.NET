@@ -4,7 +4,7 @@ using System;
 
 namespace PayPal.NET.Models.Paypal.Responses
 {
-    public abstract class PaypalCaptureResponseBase<PUB, I, A> where PUB : PurchaseUnitBaseResponse<I, A> where I : ItemBase<A> where A : Amount
+    public abstract class PaypalCaptureResponseBase<PUR, I, A> where PUR : PurchaseUnitBaseResponse<I, A> where I : ItemBase<A> where A : Amount
     {
         /// <summary>
         /// The date and time when the transaction occurred, in Internet date and time format.
@@ -60,7 +60,7 @@ namespace PayPal.NET.Models.Paypal.Responses
         /// <summary>
         /// An array of purchase units. Each purchase unit establishes a contract between a customer and merchant. Each purchase unit represents either a full or partial order that the customer intends to purchase from the merchant.
         /// </summary>
-        public PUB[] purchase_units { get; set; }
+        public PUR[] purchase_units { get; set; }
         /// <summary>
         /// The order status.
 
