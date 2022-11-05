@@ -1,8 +1,5 @@
 ﻿namespace PayPal.NET.Models.Paypal.Models
 {
-    /// <summary>
-    /// The payment source used to fund the payment.
-    /// </summary>
     public class PaymentSource
     {
         /// <summary>

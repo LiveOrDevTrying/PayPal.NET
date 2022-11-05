@@ -2,7 +2,7 @@
 using PayPal.NET.Models.Responses;
 using System;
 
-namespace PayPal.NET.Models.Paypal.Responses
+namespace PayPal.NET.Models.Paypal.Responses.Orders
 {
     public abstract class OrdersCapturePaymentForOrderBase<PUR, I, A> where PUR : PurchaseUnitBaseResponse<I, A> where I : ItemBase<A> where A : Amount
     {
@@ -51,7 +51,7 @@ namespace PayPal.NET.Models.Paypal.Responses
 
         /// ORDER_COMPLETE_ON_PAYMENT_APPROVAL.API Caller expects the Order to be auto completed(i.e. for PayPal to authorize or capture depending on the intent) on completion of payer approval.This option is not relevant for payment_source that typically do not require a payer approval or interaction.This option is currently only available for the following payment_source: Alipay, Bancontact, BLIK, boletobancario, eps, giropay, iDEAL, Multibanco, MyBank, OXXO, P24, PayU, PUI, SafetyPay, SatisPay, Sofort, Trustly, TrustPay, Verkkopankki, WeChat Pay
         /// NO_INSTRUCTION.The API caller intends to authorize v2/checkout/orders/id/authorize or capture v2/checkout/orders/id/capture after the payer approves the order.
-        
+
         /// Minimum length: 1.
         /// Maximum length: 36.
         /// Pattern: ^[0-9A-Z_]+$.

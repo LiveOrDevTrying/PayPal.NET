@@ -1,6 +1,7 @@
 ﻿using PayPal.NET.Models.Paypal.Models;
+using PayPal.NET.Models.Responses;
 
-namespace PayPal.NET.Models.Responses
+namespace PayPal.NET.Models.Paypal.Responses.Orders
 {
     public abstract class OrdersCreateOrderBase<PU, I, A>
         where PU : PurchaseUnitBaseResponse<I, A>

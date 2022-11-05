@@ -1,7 +1,7 @@
 ﻿using PayPal.NET.Models.Paypal.Models;
 using PayPal.NET.Models.Responses;
 
-namespace PayPal.NET.Models.Paypal.Requests
+namespace PayPal.NET.Models.Paypal.Responses.Payments
 {
     public class PaymentsRefundCapturedPaymentResponse
     {

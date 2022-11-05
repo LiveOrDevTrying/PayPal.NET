@@ -1,9 +1,9 @@
 ﻿using PayPal.NET.Models.Paypal.Models;
 
-namespace PayPal.NET.Models.Paypal.Requests
+namespace PayPal.NET.Models.Paypal.Requests.Orders
 {
     public abstract class OrdersCreateOrderRequestBase<PU, I, A>
-        where PU : PurchaseUnitBase<I, A> 
+        where PU : PurchaseUnitBase<I, A>
         where I : ItemBase<A>
         where A : Amount
     {
